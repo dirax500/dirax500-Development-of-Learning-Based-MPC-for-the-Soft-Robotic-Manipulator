@@ -1,0 +1,34 @@
+clc; clear; close all;
+
+torque1 = 1.5;
+torque2 = 0;
+torque3 = 0;
+
+M = 1; %kg
+
+
+% Spring and damper parameters
+
+% middle - 4x larger
+% k = 0.0025;
+% b = 0.0035;
+% k_m = 4*k;
+% b_m = 4*b;
+
+% middle - 3x larger
+% k = 0.00345;
+% b = 0.0065;
+% k_m = 3*k;
+% b_m = 3*b;
+
+% middle - 2x larger
+k = 0.00;
+b = 0.006;
+k_m = 2*k;
+b_m = 2*b;
+
+% middle - same
+% k = 0.008;
+% b = 0.011;
+% k_m = k;
+% b_m = b;

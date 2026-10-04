@@ -1,0 +1,12 @@
+clc; clear; close all;
+
+% robot_params.m
+L = 0.15;        % leg link length (meters) — measure from your robot
+r = 0.02;        % cable moment arm at bellows joint (meters)
+phi = [30, 150, 270] * pi/180;  % leg azimuths in radians
+leg_radius = 0.08;  % distance from center to leg attachment (meters)
+
+% Input values
+theta_x = deg2rad(0); %deg
+theta_y = deg2rad(0); %deg
+d_z = 0.; %m
