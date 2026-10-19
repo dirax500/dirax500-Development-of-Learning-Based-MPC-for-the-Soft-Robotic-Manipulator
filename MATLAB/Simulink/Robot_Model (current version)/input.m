@@ -1,8 +1,8 @@
 clc; clear; close all;
 
-torque1 = 3;
-torque2 = 0;
-torque3 = 0;
+motion1 = deg2rad(30);
+motion2 = deg2rad(30);
+motion3 = deg2rad(30);
 
 M = 1; %kg
 
