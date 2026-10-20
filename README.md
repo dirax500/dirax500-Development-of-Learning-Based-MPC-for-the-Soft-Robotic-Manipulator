@@ -1,4 +1,4 @@
-# SoftTri
+# Development-of-Learning-Based-MPC-for-the-Soft-Robotic-Manipulator
 
 A three-motor soft robot platform for research on learning-based model predictive control (MPC).
 This repository collects the hardware design, control code and the data-driven models developed for the platform.
@@ -7,11 +7,22 @@ This repository collects the hardware design, control code and the data-driven m
 
 ## Repository structure
 
+The src folder consists of the following folders.
+
 | Folder | Content |
 |---|---|
-| [`CAD/`](CAD) | <!-- TODO: describe, e.g. CAD files and STL/STEP exports of the platform --> |
-| [`MATLAB/`](MATLAB) | <!-- TODO: describe, e.g. test-bench / Simulink / control scripts --> |
-| [`Kinematic_model/`](Kinematic_model) | Neural-network inverse model: desired platform pose → motor positions (Python). See below. |
+| [`MATLAB/`](MATLAB) | MATLAB code and Simulink model of the soft robot platform in various instances |
+| [`Kinematic_model/`](Kinematic_model) | Neural-network inverse model: desired platform pose → motor positions (Python) |
+
+The soft robot platform structure is given in this figure.
+![Soft Robot Platform](SoftRobotPlatform.png)
+
+## MATLAB
+
+MATLAB folder contains two folders:
+- Simulink: contains the following folders, indicating history of the simulation model development
+  - Previous version: early stage Simulink models of the soft robot
+  - Robot_model (current version): current stage Simulink models at different scenarios (in development)
 
 ## Kinematic_model: pose → motor positions
 
@@ -102,14 +113,6 @@ f = model.to_casadi(rest)
 
 `use_model.py` contains this example.
 
-### Limitations
-
-- **One speed, seven sweeps.** All data comes from one session at one sweep speed, so the model is only validated for that range: platform heights down to about −98 mm and tilt up to about 25°.
-- **Reachable poses.** Height and tilt are coupled; not every combination of z, roll and pitch is reachable. The model has no notion of reachability.
-- **Static queries are less precise.** With zero rate the model returns something between the winding and unwinding branches (about 10° motor RMSE in tests, against about 4° with the motion flags).
-- **Motors are not identical.** The same motor travel gave different tilt on the three motors (about 25°, 22° and 20°). The shared network averages this out.
-- **No hardware round-trip yet.** The error figures come from held-out recordings, not from commanding the predicted positions on the robot.
-- **Mocap and motors are separate logs.** They are fused after the fact by time alignment.
 
 ### Roadmap
 
@@ -127,10 +130,10 @@ The design of the model and the planned MPC build on:
 - M. T. Gillespie et al., "Learning Nonlinear Dynamic Models of Soft Robots for Model Predictive Control with Neural Networks," *IEEE International Conference on Soft Robotics (RoboSoft)*, 2018.
 - D. Piga et al., "Performance-Oriented Model Learning for Data-Driven MPC Design," *IEEE Control Systems Letters*, vol. 3, no. 3, 2019.
 
+## Acknowledgment
+
+The following work is conducted under the project of supervision of Dr. Gourav Moger and PI Hussein Atakan Varol at Advanced Robotic and Mechatronic Systems Lab in Nazarbayev University.
+
 ## License
 
-<!-- TODO: choose a license (e.g. MIT) and add a LICENSE file -->
-
-## Contact
-
-<!-- TODO: name / email / affiliation -->
+MIT — see [LICENSE](LICENSE).
